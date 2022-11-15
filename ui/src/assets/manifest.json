@@ -1,0 +1,7 @@
+{
+  "name": "radio",
+  "short_name": "radio",
+  "theme_color": "#ffffff",
+  "background_color": "#ffffff",
+  "display": "standalone"
+}

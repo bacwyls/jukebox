@@ -1,0 +1,10 @@
+:~  title+'paydio'
+    info+'a dapp for urbit disc jockeys'
+    color+0xff.ffff
+    glob-ames+[~bacdun-nodmyn-dosrux 0v0]
+    base+'paydio'
+    version+[0 0 1]
+    image+'https://0x0.st/oIMr.png'
+    website+'https://github.com/bacwyls/paydio'
+    license+'MIT'
+==
