@@ -1,44 +1,41 @@
 ::  paydio spin contract
-/=  lib  /not/yet/defined/paydio
+/=  paydio  /not/yet/defined/paydio
+=,  paydio
 |_  =context
 ++  write
-  |=  =action:lib
+  |=  =action:sur
   ^-  (quip call diff)
   ?-    -.action
       %spin
-    =/  =spin:lib  [media.action author.action time.action]
-    :: static-id: some static unique id for the spin item, a large random atom hardcoded in lib
+    =/  =spin:sur  [media.action author.action time.action]
     ::
+    :: static-id: some static unique id for the spin item, a large random atom hardcoded in lib
     =/  =id     spin-data-id:lib
     =/  salt    420
     ::
-    :: spin-rice... spice
+    :: spin rice... spice
     =/  spice=item
       :*  %&
-          salt
-          label=%paydio-spin
-          noun=spin
           id
           source=me.context
           holder=me.context
-          town-id=town-id.context
+          town=town.context
+          salt
+          label=%paydio-spin
+          noun=spin
       ==
     ::
-    =/  event=[@tas json]
-      (create-event:lib action)
+    :: =/  event=[@tas json]
+    ::   (create-event:lib action)
     ::
-    :: TODO charge some zigs from id.from.context into the paydio host wallet ;)
-    :: ^ maybe the amount is defined in bid.action, stored in the rice
-    ::   and somehow used to determine permissions / create incentives?
-    :: probably not necessary for alpha release tho,
-    :: i want to keep it as simple as possible
+    :: TODO charge some zigs from id.from.context into the paydio host wallet 🫰
     ::
     =/  mine=(unit item)  (scry-state id)
     ?~  mine
       :: issue spice (only on first call)
-      (result ~ [spice ~] ~ [event ~])
+      (result ~ [spice ~] ~ ~)
     :: change spice (all subsequent calls)
-    (result [spice ~] ~ ~ [event ~])
+    (result [spice ~] ~ ~ ~)
   ::
   ==
 ::
@@ -47,11 +44,12 @@
   :: we dont care about the path,
   :: theres only one spin item
   ++  json
-    =/  mine=(unit item)  (scry-state static-spin-id:lib)
-    ?~  mine  ~
-    (spice-to-json:lib u.mine)
+    :: =/  mine=(unit item)  (scry-state spin-data-id:lib)
+    :: ?~  mine  ~
+    :: (spice-to-json:lib u.mine)
+    ~
   ++  noun
-    =/  mine=(unit item)  (scry static-spin-id:lib)
+    =/  mine=(unit item)  (scry-state spin-data-id:lib)
     ?~  mine  ~
     data.u.mine
   --
