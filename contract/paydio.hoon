@@ -1,5 +1,5 @@
 ::  paydio spin contract
-/=  paydio  /not/yet/defined/paydio
+/=  paydio  /con/lib/paydio
 =,  paydio
 |_  =context
 ++  write
@@ -17,8 +17,8 @@
     =/  spice=item
       :*  %&
           id
-          source=me.context
-          holder=me.context
+          source=this.context
+          holder=this.context
           town=town.context
           salt
           label=%paydio-spin
@@ -33,9 +33,9 @@
     =/  mine=(unit item)  (scry-state id)
     ?~  mine
       :: issue spice (only on first call)
-      (result ~ [spice ~] ~ ~)
+      `(result ~ [spice ~] ~ ~)
     :: change spice (all subsequent calls)
-    (result [spice ~] ~ ~ ~)
+    `(result [spice ~] ~ ~ ~)
   ::
   ==
 ::
@@ -49,8 +49,10 @@
     :: (spice-to-json:lib u.mine)
     ~
   ++  noun
-    =/  mine=(unit item)  (scry-state spin-data-id:lib)
-    ?~  mine  ~
-    data.u.mine
+    :: =/  mine=(unit item)  (scry-state spin-data-id:lib)
+    :: ?~  mine  ~
+    ::  TODO assert item is data, not pact
+    :: noun.u.mine
+    ~
   --
 --
