@@ -10,16 +10,23 @@
     =/  =spin:sur  [media.action author.action time.action]
     ::
     :: static-id: some static unique id for the spin item, a large random atom hardcoded in lib
-    =/  =id     spin-data-id:lib
-    =/  salt    420
+    =/  salt    spin-data-salt:lib
+    ::
+    =/  source   this.context
+    =/  holder   this.context
+    =/  town     town.context
+    ::
+    =/  =id
+      (hash-data source holder town salt)
+    ::
     ::
     :: spin rice... spice
     =/  spice=item
       :*  %&
           id
-          source=this.context
-          holder=this.context
-          town=town.context
+          source
+          holder
+          town
           salt
           label=%paydio-spin
           noun=spin

@@ -16,7 +16,7 @@
 ::
 ++  lib
   |%
-  ++  spin-data-id
-    `@ux`'static-spin-id'
+  ++  spin-data-salt
+    `@ux`'static-spin-salt' 
   --
 --
