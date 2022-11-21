@@ -4,12 +4,13 @@
   |%
   +$  spin
     $:  media=@t
-        author=@p
+        author=@ux
         time=@da
     ==
   +$  action
     $%  $:  %spin
-            spin
+            media=@t
+            time=@da
         ==
     ==
   --

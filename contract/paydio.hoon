@@ -7,7 +7,8 @@
   ^-  (quip call diff)
   ?-    -.action
       %spin
-    =/  =spin:sur  [media.action author.action time.action]
+    =/  =spin:sur
+      [media.action id.caller.context time.action]
     ::
     :: static-id: some static unique id for the spin item, a large random atom hardcoded in lib
     =/  salt    spin-data-salt:lib
