@@ -9,8 +9,8 @@
   ==
 +$  spin
   $:
-  media=cord
-  author=ship
+  media=@t
+  author=@ux
   time=@da
   ==
 ::
@@ -38,7 +38,7 @@
     [%tune tune=(unit @p)]
     [%talk talk=cord]
     :: [%view view=cord]
-    [%spin url=cord time=@da]
+    [%spin spin]
     [%chat message=cord from=ship time=@da]
     [%viewers viewers=(set ship)]
     [%chatlog chatlog=(list chat)]

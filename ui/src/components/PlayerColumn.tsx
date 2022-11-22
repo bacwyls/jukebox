@@ -8,6 +8,7 @@ import { useAppSelector, useAppDispatch } from '../app/hooks';
 import {
   selectSpinUrl,
   selectSpinTime,
+  selectSpinAuthor,
   selectTunePatP,
   selectViewers
 } from '../features/station/stationSlice';
@@ -30,6 +31,7 @@ export const PlayerColumn: FC<IPlayerColumn> = (props: IPlayerColumn) => {
 
   const spinUrl = useAppSelector(selectSpinUrl);
   const spinTime = useAppSelector(selectSpinTime);
+  const spinAuthor = useAppSelector(selectSpinAuthor);
   const tunePatP = useAppSelector(selectTunePatP);
   const playerReady = useAppSelector(selectPlayerReady);
   const playerInSync = useAppSelector(selectPlayerInSync);
@@ -82,7 +84,7 @@ export const PlayerColumn: FC<IPlayerColumn> = (props: IPlayerColumn) => {
           <button
             className={`hover:pointer px-4 py-2 \
                       flex-initial outline-none \
-                      font-bold underline border-black border-t-0 \
+                      font-bold underline border-black \
                       text-red-500 `}
             onClick={(e) => {
               radio.seekToGlobal(spinTime);
@@ -95,7 +97,7 @@ export const PlayerColumn: FC<IPlayerColumn> = (props: IPlayerColumn) => {
             <button
               className={`hover:pointer px-4 py-2 \
                         flex-initial outline-none \
-                        font-bold underline border-black border-t-0 \
+                        font-bold underline border-black \
                         text-blue-500 `}
               style={{ whiteSpace:'nowrap' }}
               onClick={(e) => {
@@ -111,7 +113,7 @@ export const PlayerColumn: FC<IPlayerColumn> = (props: IPlayerColumn) => {
       <button
         className={`hover:pointer px-4 py-2 \
                   flex-initial outline-none \
-                  font-bold underline border-black border-t-0 \
+                  font-bold underline border-black \
                   ${helpMenuOpen ? 'border' : ''}`}
         onClick={(e) => {
           setHelpMenuLeft(e.clientX - (isMobile ? 30 : 0));
@@ -172,6 +174,9 @@ export const PlayerColumn: FC<IPlayerColumn> = (props: IPlayerColumn) => {
             },
           }}
         />
+        <p className={'mt-2'}> author:
+            <a href={`/apps/ziggurat/indexer/address/${spinAuthor}`} target='_blank'>{' '}{spinAuthor}</a>
+        </p>
         <div className='flex flex-row'>
           <div
             className='flex-1'

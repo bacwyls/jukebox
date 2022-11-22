@@ -18,6 +18,6 @@
 ++  lib
   |%
   ++  spin-data-salt
-    `@ux`'static-spin-salt' 
+    `@ux`'static-spin-salt-0' 
   --
 --

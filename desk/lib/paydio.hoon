@@ -64,7 +64,8 @@
     %spin
      %-  pairs
       :~
-      ['url' %s url.act]
+      ['media' %s media.act]
+      ['author' %s (scot %ux author.act)]
       ['time' (sect time.act)]
       ==
     %talk
@@ -138,7 +139,8 @@
     ++  spin
       %-  ot
       :~  
-          [%url so]
+          [%media so]
+          [%author nu]
           [%time di]
       ==
     ::

@@ -1,4 +1,4 @@
-/-  store=paydio
+/-  store=paydio, zig-indexer
 /+  rib=paydio
 /+  default-agent, dbug, agentio
 =,  format
@@ -10,12 +10,7 @@
 +$  state-0  $:
   %0
   talk=cord
-  spin=cord
-  ::  set to a time near the present
-  ::  *time is too long ago and causes
-  ::  -the frontend syncing to bug out
-  spin-time=_~2022.10.3..20.40.15..7021
-  
+  =spin:store
   online=_&
   viewers=(map ship time)
   chatlog=(list chat:store)
@@ -58,14 +53,14 @@
   :: annoyance: now.bowl here is wrong!
   :: =.  spin-time  now.bowl
   `this
-:: ++  on-load  on-load:def
-++  on-load
-  |=  old-state=vase
-  ^-  (quip card _this)
-  =/  old  !<(versioned-state old-state)
-  ?-  -.old
-    %0  `this(state old)
-  ==
+++  on-load  on-load:def
+:: ++  on-load
+::   |=  old-state=vase
+::   ^-  (quip card _this)
+::   =/  old  !<(versioned-state old-state)
+::   ?-  -.old
+::     %0  `this(state old)
+::   ==
 ++  on-leave
   |=  [=path]
   =.  viewers
@@ -88,7 +83,7 @@
     :: :: paydio
       %paydio-action
     =/  act  !<(action:store vase)
-    :: ~&  >>  [%on-poke-tower act]
+    ~&  >>  [%on-poke-tower act]
     ?-  -.act
       :: ::
           %tune     `this
@@ -108,16 +103,22 @@
       (transmit act)
       :: ::
           %spin
-      ?.  permitted:hc
-        :: permission denied
-        `this
-      =.  spin.state
-          url.act
+      =/  spun
+        ~(scry-uqbar hc bowl)
       ::
-      =.  spin-time.state
-          time.act
+      =/  a=*
+          +>+>+>+>+>+<:spun
+      =/  b=*
+          +>+>+>+>+>+>-:spun
+      =/  c=*
+          +>+>+>+>+>+>+:spun
+      ::
+      =/  aa=@t  ?^(a !! a)
+      =/  bb=@ux  ?^(b !! b)
+      =/  cc=@da  ?^(c !! c)
+      =.  spin.state  [aa bb cc]
       :_  this
-      (transmit act)
+      (transmit [%spin spin.state])
       :: ::
 
           %chat
@@ -216,7 +217,7 @@
         ::  i think there is much room for improvement, and a refactor for this purpose
         ::  will be in order soon
         ::
-        (init-fact [%spin spin spin-time])
+        (init-fact [%spin spin])
         (init-fact [%tune `our.bowl])
         (init-fact [%viewers ships])
         (init-fact [%chatlog (flop chatlog)])
@@ -247,6 +248,21 @@
   :~
     (fact:agentio paydio-action+!>(act) ~[/global])
   ==
+::
+:: uqbar
+++  paydio-contract-id
+  0x3d7a.7477.a55d.721c.3db4.bdc3.b675.96ed.8b3e.0b23.7c0e.6a11.121a.e488.2eee.08c6
+++  scry-uqbar-path
+  :~
+  (scot %p our.bowl)
+  %uqbar
+  (scot %da now.bowl)
+  %indexer  %newest  %item
+  (scot %ux paydio-contract-id)
+  %noun
+  ==
+++  scry-uqbar
+  .^(update:zig-indexer %gx scry-uqbar-path)
 ::
 :: presence heartbeat stuff
 ++  stale-timeout  ~m6

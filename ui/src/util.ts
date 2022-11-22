@@ -4,6 +4,7 @@ import {
   setTalkMsg,
   setSpinUrl,
   setSpinTime,
+  setSpinAuthor,
   setTunePatP,
   setIsPublic,
   setViewers,
@@ -29,8 +30,10 @@ export function handleUpdate(update: any, radio: Radio, dispatch: any, userInter
     case 'spin':
       var updateSpin = update['spin'];
 
-      dispatch(setSpinUrl(updateSpin.url));
+      dispatch(setSpinUrl(updateSpin.media));
       dispatch(setSpinTime(updateSpin.time));
+      dispatch(setSpinAuthor(updateSpin.author));
+      // dispatch(setTunePatP(updateSpin.author));
       break;
     case 'talk':
       // let synth = window.speechSynthesis;

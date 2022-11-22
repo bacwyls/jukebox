@@ -9,23 +9,27 @@ export const HelpMenu: FC<IHelpMenu> = (props: IHelpMenu) => {
 
   const {top, left} = props;
 
+  const contractID = '0x4c11.a949.a311.1404.21dd.4046.23e2.dbf7.f7d0.eb5e.0d38.feb2.1920.a944.268f.dfde'
   return(
     <div
       className="p-4 bg-white"
       style={{
         position:'absolute',
-        top: top - 30,
+        top: top - 50,
         left: left,
         transform: 'translate(-100%, -100%)'
       }}
     >
-    <p className="mb-4">to interact with radio, enter commands in chat</p>
-      <p className="font-bold">!play https://www.youtube.com/watch?v=3vLHelBuTRM</p>
-      <div className="ml-4 mb-4">
-        <p>change the current song / video / livestream</p>
-        <p>(youtube, soundcloud, twitch, vimeo, audio/video URLs)</p>
-      </div>
-    
+      <p className='mb-4'> contractID:
+        <a href={`/apps/ziggurat/indexer/address/${contractID}`} target='_blank'>
+        {' '}{contractID}
+        </a>
+      </p>
+    <p className="">to change the song: </p>
+      
+      <p className="font-bold ml-2">[%spin url start_time]</p>
+      <p className="font-bold ml-2">[%spin 'https://www.youtube.com/watch?v=3vLHelBuTRM' ~2022.11.22..18.51.49..f230]</p>
+      <p className='mt-2'>to make the station catch up with the chain, type !play in chat</p>
       {/* <p className="font-bold">
       !set-time
       </p>

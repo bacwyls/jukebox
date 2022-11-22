@@ -11,6 +11,7 @@ export interface StationState {
   talkMsg: string;
   spinUrl: string;
   spinTime: number;
+  spinAuthor: string;
   tunePatP: string;
   radioSub: number;
   isPublic: boolean;
@@ -22,6 +23,7 @@ export interface StationState {
 const initialState: StationState = {
   talkMsg: '',
   spinUrl: '',
+  spinAuthor: '',
   spinTime: 0,
   tunePatP: '',
   radioSub: 0,
@@ -45,6 +47,12 @@ export const stationSlice = createSlice({
       return {
         ...state,
         spinUrl: action.payload
+      }
+    },
+    setSpinAuthor: (state, action: PayloadAction<string>) => {
+      return {
+        ...state,
+        spinAuthor: action.payload
       }
     },
     setSpinTime: (state, action: PayloadAction<number>) => {
@@ -113,6 +121,7 @@ export const stationSlice = createSlice({
 export const { 
   setTalkMsg,
   setSpinUrl,
+  setSpinAuthor,
   setSpinTime,
   setTunePatP,
   setRadioSub,
@@ -128,6 +137,7 @@ export const {
 export const selectTalkMsg = (state: RootState) => state.station.talkMsg;
 export const selectSpinUrl = (state: RootState) => state.station.spinUrl;
 export const selectSpinTime = (state: RootState) => state.station.spinTime;
+export const selectSpinAuthor = (state: RootState) => state.station.spinAuthor;
 export const selectTunePatP = (state: RootState) => state.station.tunePatP;
 export const selectRadioSub = (state: RootState) => state.station.radioSub;
 export const selectIsPublic = (state: RootState) => state.station.isPublic;

@@ -105,16 +105,14 @@ export class Radio {
     }
 
     public spin(playUrl:string) {
-        if(!this.isValidHttpUrl(playUrl)) return;
-        let currentUnixTime = Date.now()
-        currentUnixTime = Math.ceil(currentUnixTime);
         this.api.poke({
             app: 'paytenna',
             mark: 'paydio-action',
             json: {spin :
                     {
-                    url: playUrl,
-                    time: currentUnixTime
+                    media:'',
+                    author:'0',
+                    time:0,
                     }
                 }
             });
