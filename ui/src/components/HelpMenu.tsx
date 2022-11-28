@@ -29,7 +29,7 @@ export const HelpMenu: FC<IHelpMenu> = (props: IHelpMenu) => {
       
       <p className="font-bold ml-2">[%spin url start_time]</p>
       <p className="font-bold ml-2">[%spin 'https://www.youtube.com/watch?v=3vLHelBuTRM' ~2022.11.22..18.51.49..f230]</p>
-      <p className='mt-2'>to make the station catch up with the chain, type !play in chat</p>
+
       {/* <p className="font-bold">
       !set-time
       </p>

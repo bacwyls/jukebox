@@ -35,10 +35,22 @@
   |=  [=wire =sign:agent:gall]
   ^-  (quip card _this)
   ?+    -.sign  (on-agent:def wire sign)
-      :: had a really bad bug related to this
-      :: arvo pot hole?
-    %poke-ack
-    `this
+      %fact
+    ?.  =(wire /agentio-watch/batch-order/0x0)
+      `this
+    =/  spun
+      ~(scry-uqbar hc bowl)
+    ?.  ?=(%newest-item -.spun)
+      `this
+    ?>  ?=(%& -.item.spun)
+    =/  rice
+      ;;([@ @ @] noun.p.item.spun)
+    ?:  =(spin.state rice)
+      `this
+    =.  spin.state
+      rice
+    :_  this
+      (transmit [%spin spin.state])
   ==
 ++  on-arvo
   |=  [=wire =sign-arvo]
@@ -49,10 +61,13 @@
   !>(state)
 ++  on-init
   ^-  (quip card _this)
-  ::
-  :: annoyance: now.bowl here is wrong!
-  :: =.  spin-time  now.bowl
-  `this
+  :_  this
+  ~&  >  "watching indexer from paytower"
+  :~
+  %+  watch-our:pass:io
+  %indexer
+  /batch-order/0x0
+  ==
 ++  on-load  on-load:def
 :: ++  on-load
 ::   |=  old-state=vase
@@ -83,7 +98,7 @@
     :: :: paydio
       %paydio-action
     =/  act  !<(action:store vase)
-    ~&  >>  [%on-poke-tower act]
+    :: ~&  >>  [%on-poke-tower act]
     ?-  -.act
       :: ::
           %tune     `this
@@ -103,24 +118,8 @@
       (transmit act)
       :: ::
           %spin
-      =/  spun
-        ~(scry-uqbar hc bowl)
-      ::
-      =/  a=*
-          +>+>+>+>+>+<:spun
-      =/  b=*
-          +>+>+>+>+>+>-:spun
-      =/  c=*
-          +>+>+>+>+>+>+:spun
-      ::
-      =/  aa=@t  ?^(a !! a)
-      =/  bb=@ux  ?^(b !! b)
-      =/  cc=@da  ?^(c !! c)
-      =.  spin.state  [aa bb cc]
-      :_  this
-      (transmit [%spin spin.state])
+      `this
       :: ::
-
           %chat
       :: ?.  permitted:hc  !!
       ::
@@ -262,6 +261,7 @@
   %noun
   ==
 ++  scry-uqbar
+
   .^(update:zig-indexer %gx scry-uqbar-path)
 ::
 :: presence heartbeat stuff
