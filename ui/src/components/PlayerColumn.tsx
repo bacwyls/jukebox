@@ -84,7 +84,7 @@ export const PlayerColumn: FC<IPlayerColumn> = (props: IPlayerColumn) => {
           <button
             className={`hover:pointer px-4 py-2 \
                       flex-initial outline-none \
-                      font-bold underline border-black \
+                      font-bold underline border-white \
                       text-red-500 `}
             onClick={(e) => {
               radio.seekToGlobal(spinTime);
@@ -97,7 +97,7 @@ export const PlayerColumn: FC<IPlayerColumn> = (props: IPlayerColumn) => {
             <button
               className={`hover:pointer px-4 py-2 \
                         flex-initial outline-none \
-                        font-bold underline border-black \
+                        font-bold underline border-white \
                         text-blue-500 `}
               style={{ whiteSpace:'nowrap' }}
               onClick={(e) => {
@@ -113,7 +113,7 @@ export const PlayerColumn: FC<IPlayerColumn> = (props: IPlayerColumn) => {
       <button
         className={`hover:pointer px-4 py-2 \
                   flex-initial outline-none \
-                  font-bold underline border-black \
+                  font-bold underline border-white text-gray-200 \
                   ${helpMenuOpen ? 'border' : ''}`}
         onClick={(e) => {
           setHelpMenuLeft(e.clientX - (isMobile ? 30 : 0));
@@ -166,7 +166,7 @@ export const PlayerColumn: FC<IPlayerColumn> = (props: IPlayerColumn) => {
           onReady={() => dispatch(setPlayerReady(true))}
           // onSeek={e => console.log('onSeek', e)}
           onProgress={e => handleProgress(e)}
-          style={{ backgroundColor:'lightgray' }}
+          style={{ backgroundColor:'#505050'}}
           config={{
             file: {
               // makes the audio player look nice

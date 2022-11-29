@@ -3,7 +3,14 @@
 @tailwind utilities;
 *{
     -ms-overflow-style: none;
+     color:white;
 }
 ::-webkit-scrollbar {
     display: none;
+}
+#app {
+    background-color: black;
+}
+html {
+    background-color: black;
 }

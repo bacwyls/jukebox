@@ -1,5 +1,5 @@
-/-  store=paydio, zig-indexer
-/+  rib=paydio
+/-  store=jukebox, zig-indexer
+/+  rib=jukebox
 /+  default-agent, dbug, agentio
 =,  format
 ::
@@ -95,8 +95,8 @@
       %noun
     `this
     ::
-    :: :: paydio
-      %paydio-action
+    :: :: jukebox
+      %jukebox-action
     =/  act  !<(action:store vase)
     :: ~&  >>  [%on-poke-tower act]
     ?-  -.act
@@ -104,6 +104,9 @@
           %tune     `this
           %viewers  `this
           %chatlog  `this
+          ::
+          %uqbar-spin  `this
+          %uqbar-tip   `this
       :: ::
           %talk
       ?.  permitted:hc
@@ -118,7 +121,21 @@
       (transmit act)
       :: ::
           %spin
-      `this
+      ?.  =(our.bowl src.bowl)
+        `this
+      =/  spun
+        ~(scry-uqbar hc bowl)
+      ?.  ?=(%newest-item -.spun)
+        `this
+      ?>  ?=(%& -.item.spun)
+      =/  rice
+        ;;([@ @ @] noun.p.item.spun)
+      ?:  =(spin.state rice)
+        `this
+      =.  spin.state
+        rice
+      :_  this
+      (transmit [%spin spin.state])
       :: ::
           %chat
       :: ?.  permitted:hc  !!
@@ -156,9 +173,9 @@
       (kick-only:io ship ~[/global /personal])
     ==
     ::
-    :: :: paydio admin
+    :: :: jukebox admin
     :: banning stuff
-      %paydio-admin
+      %jukebox-admin
     ?.  =(src.bowl our.bowl)
       :: only admin
       `this
@@ -237,19 +254,19 @@
 ::
 ++  init-fact
   |=  act=action:store
-  (fact:agentio paydio-action+!>(act) ~[/personal])
+  (fact:agentio jukebox-action+!>(act) ~[/personal])
 ++  transmit-card
   |=  act=action:store
-  (fact:agentio paydio-action+!>(act) ~[/global])
+  (fact:agentio jukebox-action+!>(act) ~[/global])
 ++  transmit
   |=  act=action:store
   :: ~&  >>>  [%tower-transmitting act]
   :~
-    (fact:agentio paydio-action+!>(act) ~[/global])
+    (fact:agentio jukebox-action+!>(act) ~[/global])
   ==
 ::
 :: uqbar
-++  paydio-contract-id
+++  jukebox-contract-id
   0x3d7a.7477.a55d.721c.3db4.bdc3.b675.96ed.8b3e.0b23.7c0e.6a11.121a.e488.2eee.08c6
 ++  scry-uqbar-path
   :~
@@ -257,7 +274,7 @@
   %uqbar
   (scot %da now.bowl)
   %indexer  %newest  %item
-  (scot %ux paydio-contract-id)
+  (scot %ux jukebox-contract-id)
   %noun
   ==
 ++  scry-uqbar

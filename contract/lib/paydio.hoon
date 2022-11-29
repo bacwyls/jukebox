@@ -1,4 +1,4 @@
-:: paydio contract lib
+:: jukebox contract lib
 |%
 ++  sur
   |%

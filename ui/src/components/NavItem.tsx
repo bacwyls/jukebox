@@ -23,7 +23,7 @@ export const NavItem: FC<INavItem> = (props: INavItem) => {
           <span>logout</span>
         </button> 
       : <button
-          className="hover:pointer border-black  \
+          className="hover:pointer border-white  \
                     border px-1 text-center inline-block \
                     flex-initial mr-2 my-1"
           style={{ whiteSpace:'nowrap' }}

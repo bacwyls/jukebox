@@ -33,6 +33,9 @@ export function handleUpdate(update: any, radio: Radio, dispatch: any, userInter
       dispatch(setSpinUrl(updateSpin.media));
       dispatch(setSpinTime(updateSpin.time));
       dispatch(setSpinAuthor(updateSpin.author));
+
+      console.log('setting spin author')
+      radio.setSpinAuthor(updateSpin.author);
       // dispatch(setTunePatP(updateSpin.author));
       break;
     case 'talk':
@@ -116,7 +119,11 @@ export function handleUserInput(
       radio.talk(arg);
       break;
     case 'play':
-      radio.spin(arg);
+      radio.uqbarSpin(arg);
+      radio.chat(chat);
+      break;
+    case 'tip':
+      radio.uqbarTip(arg);
       radio.chat(chat);
       break;
     // case 'tune':

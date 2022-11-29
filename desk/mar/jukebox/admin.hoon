@@ -1,5 +1,5 @@
-/-  store=paydio
-/+  *paydio
+/-  store=jukebox
+/+  *jukebox
 ::
 |_  act=admin:store
 ++  grad  %noun

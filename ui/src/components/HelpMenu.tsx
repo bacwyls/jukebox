@@ -12,11 +12,11 @@ export const HelpMenu: FC<IHelpMenu> = (props: IHelpMenu) => {
   const contractID = '0x4c11.a949.a311.1404.21dd.4046.23e2.dbf7.f7d0.eb5e.0d38.feb2.1920.a944.268f.dfde'
   return(
     <div
-      className="p-4 bg-white"
+      className="p-4 bg-black"
       style={{
         position:'absolute',
         top: top - 50,
-        left: left,
+        left: left + 20,
         transform: 'translate(-100%, -100%)'
       }}
     >
@@ -25,10 +25,14 @@ export const HelpMenu: FC<IHelpMenu> = (props: IHelpMenu) => {
         {' '}{contractID}
         </a>
       </p>
-    <p className="">to change the song: </p>
-      
-      <p className="font-bold ml-2">[%spin url start_time]</p>
-      <p className="font-bold ml-2">[%spin 'https://www.youtube.com/watch?v=3vLHelBuTRM' ~2022.11.22..18.51.49..f230]</p>
+    <p>create a transaction:</p>
+    <p className="">change the media: </p>
+      <p className="font-bold ml-2 mb-1">!play https://www.youtube.com/watch?v=3vLHelBuTRM</p>
+    <p>send a tip</p>
+      <p className="font-bold ml-2 mb-1">!tip 100000</p>
+
+    <p>send a transaction:</p>
+    <p>use the Wallet app in the uqbar developer quite</p>
 
       {/* <p className="font-bold">
       !set-time

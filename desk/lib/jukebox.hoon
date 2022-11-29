@@ -1,4 +1,4 @@
-/-  sur=paydio
+/-  sur=jukebox
 =<  [sur .]
 =,  sur
 |%
@@ -70,6 +70,19 @@
       ==
     %talk
       [%s talk.act]
+    %uqbar-spin
+     %-  pairs
+      :~
+      ['from' %s (scot %ux from.act)]
+      ['media' %s media.act]
+      ==
+    %uqbar-tip
+     %-  pairs
+      :~
+      ['from' %s (scot %ux from.act)]
+      ['to' %s (scot %ux to.act)]
+      ['amount' (numb amount.act)]
+      ==
     ==
   --
 ++  unit-ship
@@ -128,6 +141,8 @@
         [%chat chat]
         [%tune (mu patp)]
         [%presence ul]
+        [%uqbar-spin uqspin]
+        [%uqbar-tip uqtip]
       ==
     ++  chat
       %-  ot
@@ -142,6 +157,19 @@
           [%media so]
           [%author nu]
           [%time di]
+      ==
+    ++  uqspin
+      %-  ot
+      :~  
+          [%from nu]
+          [%media so]
+      ==
+    ++  uqtip
+      %-  ot
+      :~  
+          [%from nu]
+          [%to nu]
+          [%amount ni]
       ==
     ::
     --

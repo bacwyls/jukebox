@@ -66,7 +66,7 @@ export const Navigation: FC<INavigation> = (props: INavigation) => {
         <span className="text-2xl align-middle">📻</span> 
         {/* tuned to */}
         <span className="flex-full ml-4 px-2 align-middle">
-          {tunePatP}
+          jukebox on uqbar
         </span>
       </div>
       

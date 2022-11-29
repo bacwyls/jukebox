@@ -1,10 +1,10 @@
-:~  title+'paydio'
+:~  title+'jukebox'
     info+'a dapp for urbit disc jockeys'
     color+0xff.ffff
     glob-ames+[~bacdun-nodmyn-dosrux 0v0]
-    base+'paydio'
+    base+'jukebox'
     version+[0 0 1]
-    image+'https://0x0.st/oIMr.png'
-    website+'https://github.com/bacwyls/paydio'
+    image+'https://0x0.st/o0_r.png'
+    website+'https://github.com/bacwyls/jukebox'
     license+'MIT'
 ==

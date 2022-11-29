@@ -55,12 +55,12 @@ export const ChatBox: FC = () => {
       <p
         key={key}
         className="p-1 \
-                   hover:bg-gray-100 mb-1"
+                   hover:bg-gray-900 mb-1"
       >  
         <span className={'mr-2 text-gray-500'}>
           {timestampFromTime(chat.time)}
         </span>
-        <span className={'font-bold mr-1'}>
+        <span className={'font-bold text-gray-200  mr-1'}>
           {chat.from}{':'}
         </span>
         {checkURL(chat.message)

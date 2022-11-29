@@ -54,7 +54,7 @@ export const ChatColumn: FC<IChatColumn> = (props: IChatColumn) => {
             type="text"
             ref={inputReference}
             className="hover:pointer px-4 py-2 inline-block \
-                      flex-1 outline-none border-none placeholder-gray-800 "
+                      flex-1 outline-none border-none placeholder-gray-200 bg-black "
             autoCorrect={'off'}
             autoCapitalize={'off'}
             autoComplete={'off'}

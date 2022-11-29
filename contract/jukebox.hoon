@@ -1,6 +1,6 @@
-::  paydio spin contract
-/=  paydio  /con/lib/paydio
-=,  paydio
+::  jukebox spin contract
+/=  jukebox  /con/lib/jukebox
+=,  jukebox
 |_  =context
 ++  write
   |=  =action:sur
@@ -29,14 +29,14 @@
           holder
           town
           salt
-          label=%paydio-spin
+          label=%jukebox-spin
           noun=spin
       ==
     ::
     :: =/  event=[@tas json]
     ::   (create-event:lib action)
     ::
-    :: TODO charge some zigs from id.from.context into the paydio host wallet 🫰
+    :: TODO charge some zigs from id.from.context into the jukebox host wallet 🫰
     ::
     =/  mine=(unit item)  (scry-state id)
     ?~  mine
