@@ -62,12 +62,30 @@ export const Navigation: FC<INavigation> = (props: INavigation) => {
 
   return(
     <div>
-      <div className="flex mt-2 align-middle table w-full">
-        <span className="text-2xl align-middle">📻</span> 
+      <div className="mt-2 w-full table">
+        <div className="table-cell text-2xl"
+          style={{
+            width:'3rem'
+          }}
+        >
+          🌺
+        </div> 
         {/* tuned to */}
-        <span className="flex-full ml-4 px-2 align-middle">
-          jukebox on uqbar
-        </span>
+        <div className="table-cell align-middle font-bold"
+        >
+          jukebox 
+        </div>
+        <div className="table-cell align-middle text-right">
+          {!radio.wallet ?
+           <div className="text-yellow-200">
+           no wallet detected
+           </div>
+           :
+           <div className="text-green-200">
+           {`using ${radio.wallet.pubkey.slice(0,12)}...`}
+           </div>
+          }
+        </div>
       </div>
       
     </div>

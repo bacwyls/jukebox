@@ -10,7 +10,6 @@
     =/  =spin:sur
       [media.action id.caller.context time.action]
     ::
-    :: static-id: some static unique id for the spin item, a large random atom hardcoded in lib
     =/  salt    spin-data-salt:lib
     ::
     =/  source   this.context
@@ -19,7 +18,6 @@
     ::
     =/  =id
       (hash-data source holder town salt)
-    ::
     ::
     :: spin rice... spice
     =/  spice=item
@@ -33,11 +31,6 @@
           noun=spin
       ==
     ::
-    :: =/  event=[@tas json]
-    ::   (create-event:lib action)
-    ::
-    :: TODO charge some zigs from id.from.context into the jukebox host wallet 🫰
-    ::
     =/  mine=(unit item)  (scry-state id)
     ?~  mine
       :: issue spice (only on first call)
@@ -49,18 +42,11 @@
 ::
 ++  read
   |_  =path
-  :: we dont care about the path,
-  :: theres only one spin item
   ++  json
-    :: =/  mine=(unit item)  (scry-state spin-data-id:lib)
-    :: ?~  mine  ~
-    :: (spice-to-json:lib u.mine)
     ~
   ++  noun
-    :: =/  mine=(unit item)  (scry-state spin-data-id:lib)
-    :: ?~  mine  ~
-    ::  TODO assert item is data, not pact
-    :: noun.u.mine
+  ::
+  ::
     ~
   --
 --

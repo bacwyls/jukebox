@@ -1,3 +1,6 @@
+:: paytenna:
+::  a crude fork of tenna for uqbar integration
+::
 /-  store=jukebox,
     w=zig-wallet
 /+  jukebox
@@ -38,36 +41,16 @@
   !>(state)
 ++  on-init
   ^-  (quip card _this)
-  :: =.  tune
-  :: [~ our.bowl]  :: DEFAULT PROVIDER
   `this
 ++  on-leave
   |=  [=path]
-  :: ~&  >>>  [%tenna %on-leave src.bowl]
   `this
-  ::
-  ::
-  ::  actually... this breaks everything
-  ::
-  :: :_  this
-  :: ::
-  :: :: this is another layer of protection to clear out stale viewers
-  :: :: poke yourself to tune out
-  :: :~
-  ::   %+  poke:pass:agentio
-  ::     [our.bowl %tenna]
-  ::     :-  %jukebox-action
-  ::     !>  [%tune ~]
-  :: ==
 ++  on-agent
   |=  [=wire =sign:agent:gall]
   ^-  (quip card _this)
-  :: ~&  >>  [%on-agent %tenna wire -.sign]
   ?~  tune.state  `this
   ?.  =(src.bowl (need tune.state))
     `this
-  :: ?+    wire  (on-agent:def wire sign)
-  ::   [%expected %wire ~]
     ?+    -.sign  (on-agent:def wire sign)
         %watch-ack
       =.  wack  &
@@ -102,11 +85,10 @@
     ?.  =(src.bowl our.bowl)
       `this
     =/  act  !<(action:store vase)
-    :: ~&  >  [%tenna %on-poke act]
     ?-  -.act
       :: ::
-          %viewers  `this  :: TODO ugly
-          %chatlog  `this  :: TODO ugly
+          %viewers  `this
+          %chatlog  `this
       :: ::
           %presence
                   :_  this  (fwd act)
@@ -128,14 +110,12 @@
       =/  =wallet-poke:w
         :*
         %transaction
-        from.act  :: from
-        jukebox-pact      :: contract
-        0x0       :: town
+        from.act      :: from
+        jukebox-pact  :: contract
+        0x0           :: town
         %noun
         inner-action
         ==
-      ::
-      ~&  >  ['uqbar spin' wallet-poke]
       ::
       :_  this
       :~
@@ -146,45 +126,6 @@
       ==
       ::
           %uqbar-tip
-      ~&  >  ['uqbar tip' act]
-      :: example tip
-      :: :uqbar &wallet-poke [%transaction from=0x7a9a.97e0.ca10.8e1e.273f.0000.8dca.2b04.fc15.9f70 contract=0x74.6361.7274.6e6f.632d.7367.697a town=0x0 action=[%give to=0xd6dc.c8ff.7ec5.4416.6d4e.b701.d1a6.8e97.b464.76de amount=123.456 item=0x89a0.89d8.dddf.d13a.418c.0d93.d4b4.e7c7.637a.d56c.96c0.7f91.3a14.8174.c7a7.71e6]]
-      :: =/  zig-pact=@ux
-      ::     0x74.6361.7274.6e6f.632d.7367.697a
-      :: =/  zig-item=@ux
-      ::     0x89a0.89d8.dddf.d13a.418c.0d93.d4b4.e7c7.637a.d56c.96c0.7f91.3a14.8174.c7a7.71e6
-      :: =/  inner-action
-      ::   :*
-      ::   %give
-      ::   to.act
-      ::   amount.act
-      ::   zig-item
-      ::   ==
-      :: =/  =wallet-poke:w
-      ::   :*
-      ::   %transaction
-      ::   from.act  :: from
-      ::   zig-pact  :: contract
-      ::   0x0       :: town
-      ::   %noun
-      ::   inner-action
-      ::   ==
-      :: :_  this
-      :: :~
-      ::   %+  poke:pass:agentio
-      ::     [our.bowl %uqbar]
-      ::     :-  %wallet-poke
-      ::     !>  wallet-poke
-      :: ==
-      ::
-      :: old one broke shit lol
-      :: stole this from hodzod
-      :: =/  user-address=@ux
-      ::   =-  ?>  ?=(%addresses -.-)
-      ::       (head ~(tap in saved.-))
-      ::   .^  wallet-update:wallet  %gx
-      ::       /(scot %p our.bowl)/wallet/(scot %da now.bowl)/addresses/noun
-      ::   ==
       =/  zigs-account-id=@ux
         %:  hash-data:smart:w
             0x74.6361.7274.6e6f.632d.7367.697a
@@ -300,4 +241,3 @@
 ++  tuneout
   jukebox-action+!>([%tune ~])
 -- 
-

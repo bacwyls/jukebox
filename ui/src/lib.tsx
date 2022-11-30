@@ -36,26 +36,30 @@ export class Radio {
   }
   
   public setSpinAuthor(spoth:string) {
-    console.log('setting inside', spoth)
     this.spinAuthor=spoth;
   }
 
   private async setWallet() {
     let result;
-    result = await this.api.scry({
-      app: 'wallet',
-      path:'/accounts'
-    })
+    try {
+      result = await this.api.scry({
+        app: 'wallet',
+        path:'/accounts',
+      })
+    } catch (e:any) {
+      console.log('no uqbar wallet detected')
+      return;
+    }
 
     console.log('got from wallet scry', result)
 
     if (result.length === 0) {
-      console.log('no uqbar wallet')
+      console.log('wallet has no accounts')
       return
     }
 
     if (Object.keys(result).length > 1) {
-      console.log(' more than one wallet, choosing the first')
+      console.log('more than one wallet, choosing the first')
     }
 
     let pub = Object.keys(result)[0];
@@ -176,13 +180,12 @@ export class Radio {
     let pub = this.wallet.pubkey.split('.').join("").slice(2);
     
     if(!this.spinAuthor){
-      console.log('spoth not defined')
+      console.log('no spin author')
       return;
     }
     let toWithoutDots = this.spinAuthor!.split('.').join("").slice(2);
 
     let amountNum = parseInt(amount);
-    // console.log('playing using', pub);
     this.api.poke({
       app: "paytenna",
       mark: "jukebox-action",

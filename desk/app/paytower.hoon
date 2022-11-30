@@ -1,3 +1,6 @@
+:: paytower:
+::  a crude fork of tower for uqbar integration
+::
 /-  store=jukebox, zig-indexer
 /+  rib=jukebox
 /+  default-agent, dbug, agentio
@@ -68,14 +71,14 @@
   %indexer
   /batch-order/0x0
   ==
-++  on-load  on-load:def
-:: ++  on-load
-::   |=  old-state=vase
-::   ^-  (quip card _this)
-::   =/  old  !<(versioned-state old-state)
-::   ?-  -.old
-::     %0  `this(state old)
-::   ==
+:: ++  on-load  on-load:def
+++  on-load
+  |=  old-state=vase
+  ^-  (quip card _this)
+  =/  old  !<(versioned-state old-state)
+  ?-  -.old
+    %0  `this(state old)
+  ==
 ++  on-leave
   |=  [=path]
   =.  viewers
@@ -87,9 +90,7 @@
 ++  on-poke
   |=  [=mark =vase]
   ^-  (quip card _this)
-  :: ~&  >>  [%tower %poke src.bowl]
   ?:  (is-banned:rib bowl banned)
-    :: ~&  >>>  [%tower %poke-from-banned src.bowl]
     `this
   ?+  mark  (on-poke:def mark vase)
       %noun
@@ -98,7 +99,6 @@
     :: :: jukebox
       %jukebox-action
     =/  act  !<(action:store vase)
-    :: ~&  >>  [%on-poke-tower act]
     ?-  -.act
       :: ::
           %tune     `this
@@ -121,6 +121,8 @@
       (transmit act)
       :: ::
           %spin
+      :: this routine is copy pasted from on-agent lol
+      :: just needed a dumb way to kick this thing into gear when i ship updates and state is wiped.
       ?.  =(our.bowl src.bowl)
         `this
       =/  spun
@@ -266,7 +268,7 @@
   ==
 ::
 :: uqbar
-++  jukebox-contract-id
+++  jukebox-rice-id
   0x3d7a.7477.a55d.721c.3db4.bdc3.b675.96ed.8b3e.0b23.7c0e.6a11.121a.e488.2eee.08c6
 ++  scry-uqbar-path
   :~
@@ -274,11 +276,10 @@
   %uqbar
   (scot %da now.bowl)
   %indexer  %newest  %item
-  (scot %ux jukebox-contract-id)
+  (scot %ux jukebox-rice-id)
   %noun
   ==
 ++  scry-uqbar
-
   .^(update:zig-indexer %gx scry-uqbar-path)
 ::
 :: presence heartbeat stuff

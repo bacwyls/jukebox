@@ -1,7 +1,7 @@
 :~  title+'jukebox'
     info+'a dapp for urbit disc jockeys'
     color+0xff.ffff
-    glob-ames+[~bacdun-nodmyn-dosrux 0v0]
+    glob-http+['https://bwyl.nyc3.digitaloceanspaces.com/jukebox/jukebox-0.0.1-0v5.hiies.br4qb.svsd5.3g8sl.u6n8r.glob' 0v5.hiies.br4qb.svsd5.3g8sl.u6n8r]
     base+'jukebox'
     version+[0 0 1]
     image+'https://0x0.st/o0_r.png'

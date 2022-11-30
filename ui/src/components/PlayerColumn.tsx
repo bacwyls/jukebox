@@ -84,7 +84,7 @@ export const PlayerColumn: FC<IPlayerColumn> = (props: IPlayerColumn) => {
           <button
             className={`hover:pointer px-4 py-2 \
                       flex-initial outline-none \
-                      font-bold underline border-white \
+                      font-bold underline \
                       text-red-500 `}
             onClick={(e) => {
               radio.seekToGlobal(spinTime);
@@ -97,7 +97,7 @@ export const PlayerColumn: FC<IPlayerColumn> = (props: IPlayerColumn) => {
             <button
               className={`hover:pointer px-4 py-2 \
                         flex-initial outline-none \
-                        font-bold underline border-white \
+                        font-bold underline \
                         text-blue-500 `}
               style={{ whiteSpace:'nowrap' }}
               onClick={(e) => {
