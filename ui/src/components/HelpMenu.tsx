@@ -29,10 +29,10 @@ export const HelpMenu: FC<IHelpMenu> = (props: IHelpMenu) => {
     <p className="">change the media: </p>
       <p className="font-bold ml-2 mb-1">!play https://www.youtube.com/watch?v=3vLHelBuTRM</p>
     <p>send a tip</p>
-      <p className="font-bold ml-2 mb-1">!tip 100000</p>
+      <p className="font-bold ml-2 mb-3">!tip 100000</p>
 
     <p>send a transaction:</p>
-    <p>use the Wallet app in the uqbar developer quite</p>
+    <p>use your Uqbar wallet to sign and approve jukebox transactions</p>
 
       {/* <p className="font-bold">
       !set-time
