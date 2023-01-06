@@ -110,6 +110,7 @@
       =/  =wallet-poke:w
         :*
         %transaction
+        ~             :: origin
         from.act      :: from
         jukebox-pact  :: contract
         0x0           :: town
@@ -140,6 +141,7 @@
           %poke  %wallet-poke
           !>  ^-  wallet-poke:w
           :*  %transaction
+              ~
               from=from.act
               contract=0x74.6361.7274.6e6f.632d.7367.697a
               town=0x0
