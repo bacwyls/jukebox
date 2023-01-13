@@ -4,6 +4,7 @@ import { NavItem } from './NavItem';
 import { selectTunePatP, selectIsPublic, } from '../features/station/stationSlice';
 import { setNavigationOpen, selectNavigationOpen } from '../features/ui/uiSlice';
 import { Radio } from '../lib';
+import { AccountSelector, HardwareWallet, HotWallet } from '@uqbar/wallet-ui';
 
 interface INavigation {
   our: string;
@@ -85,6 +86,7 @@ export const Navigation: FC<INavigation> = (props: INavigation) => {
            {`using ${radio.wallet.pubkey.slice(0,12)}...`}
            </div>
           }
+          <AccountSelector onSelectAccount={(a: HotWallet | HardwareWallet) => console.log(a.rawAddress)} />
         </div>
       </div>
       

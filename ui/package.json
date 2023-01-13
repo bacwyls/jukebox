@@ -1,5 +1,5 @@
 {
-  "name": "radio",
+  "name": "jukebox",
   "version": "0.0.0",
   "private": true,
   "scripts": {
@@ -11,6 +11,7 @@
   },
   "dependencies": {
     "@reduxjs/toolkit": "^1.8.6",
+    "@uqbar/wallet-ui": "^0.2.1",
     "@urbit/api": "^2.0.0",
     "@urbit/http-api": "^2.3.0",
     "react": "^17.0.2",

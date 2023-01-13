@@ -25,6 +25,7 @@ import {
   selectPlayerInSync,
   selectPlayerReady
 } from './features/ui/uiSlice';
+import { useWalletStore } from '@uqbar/wallet-ui';
 
 const api = new Urbit('', '', window.desk);
 api.ship = window.ship;
@@ -40,6 +41,8 @@ const tuneInitial = radio.hub;
 
 export function App() {
 
+  const { initWallet, selectedAccount } = useWalletStore()
+
   const userInteracted = useAppSelector(selectUserInteracted);
   const playerReady = useAppSelector(selectPlayerReady);
   const playerInSync = useAppSelector(selectPlayerInSync);
@@ -53,6 +56,22 @@ export function App() {
   const dispatch = useAppDispatch();
 
   const inputReference = useRef<HTMLInputElement>(null);
+
+  useEffect(() => {
+    (async () => {
+      initWallet({})
+      // getHosts()
+      // const initialRoute = await init()
+      // setRedirectPath(initialRoute || '')
+      // setRedirectPath('')
+    })()
+  }, []) // eslint-disable-line react-hooks/exhaustive-deps
+
+  useEffect(() => {
+    if (selectedAccount) {
+      console.log('uqbar got account', selectedAccount)
+    }
+  }, [selectedAccount])
 
   useEffect(() => {
     // autofocus input
